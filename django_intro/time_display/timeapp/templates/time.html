@@ -1,0 +1,39 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" >
+    <title>time display</title>
+    <style>
+        .time{
+            display: flex;
+            flex-direction: column;
+            width: 590px;
+            margin: 0px auto;
+        }
+        h4.title{
+            width: 60%;
+            padding: 14px;
+            text-align: center;
+            margin: 0px auto 20px auto;
+            border: solid black;
+        }
+        .display{
+            padding: 20px;
+            text-align: center;
+            border: solid black;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="time">
+          <h4 class="title">the current time and date is:</h4>
+          <div class="display">
+          <h1 class="date">{{date}}</h1>
+          <h1 class="time">{{time}}</h1>
+        </div>
+          
+      </div>
+  </body>
+</html>
