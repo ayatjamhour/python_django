@@ -9,7 +9,7 @@ def index(request):
 def new(request):
     return HttpResponse("placeholder to display a new form to create a new blog")
 def create(request):
-    return redirect("/")
+    return redirect("/blogs/create")
 def show(request, num):
     return HttpResponse(f"placeholder to display blog number: {num}")
 def edit(request, num):
@@ -18,7 +18,7 @@ def destroy(request,num):
     return redirect("/blogs")
 def json(request ):
     data = {'title':'My first blog',
-            'content':'my first django application' 
+            'content':'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
     }
     return JsonResponse(data)
 
