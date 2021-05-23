@@ -1,0 +1,67 @@
+1-Create 3 new dojos
+>>> dojo.objects.create(name="ayat" ,city="jerusalem",state="palestine")
+<dojo: dojo object (1)>
+>>> dojo.objects.create(name="sahar" ,city="jerusalem",state="palestine")
+<dojo: dojo object (2)>
+>>> dojo.objects.create(name="reham" ,city="jerusalem",state="palestine")
+<dojo: dojo object (3)>
+>>>>>>>>>>>>>>>>>>>>>>>>>
+2-delete 3 new dojos
+ dojo_objects_delete=dojo.objects.get(id=1)
+>>> dojo_objects_delete=dojo.objects.get(id=2)
+>>> dojo_objects_delete=dojo.objects.get(id=3)
+(1, {'userapp.ninja': 0, 'userapp.dojo': 1})
+>>> dojo_objects_delete=dojo.objects.get(id=2)
+>>> dojo_objects_delete.delete()
+(1, {'userapp.ninja': 0, 'userapp.dojo': 1})>>> dojo_objects_delete=dojo.objects.get(id=1)
+>>> dojo_objects_delete.delete()
+(1, {'userapp.ninja': 0, 'userapp.dojo': 1})
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3-Create 3 more dojos
+>>> dojo.objects.create(name="ayat" ,city="jerusalem",state="palestine")
+>>> dojo.objects.create(name="sahar" ,city="jerusalem",state="palestine")
+>>> dojo.objects.create(name="reham" ,city="jerusalem",state="palestine")
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+4-Create 3 ninjas that belong to the first dojo
+>>> ninja.objects.create(dojo=dojo.objects.get(id=4), first_name="First" , last_name="ninja")
+<ninja: ninja object (1)>
+>>> ninja.objects.create(dojo=dojo.objects.get(id=4), first_name="Seconed" , last_name="ninja")
+<ninja: ninja object (2)>
+>>> ninja.objects.create(dojo=dojo.objects.get(id=4), first_name="Third" , last_name="ninja")
+<ninja: ninja object (3)>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5-Create 3 ninjas that belong to the seconed dojo
+>>> ninja.objects.create(dojo=dojo.objects.get(id=5), first_name="First" , last_name="ninja")
+<ninja: ninja object (4)>
+>>> ninja.objects.create(dojo=dojo.objects.get(id=5), first_name="Seconed" , last_name="ninja")
+<ninja: ninja object (5)>
+>>> ninja.objects.create(dojo=dojo.objects.get(id=5), first_name="Third" , last_name="ninja")
+<ninja: ninja object (6)>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+5-Create 3 ninjas that belong to the third dojo
+>>> ninja.objects.create(dojo=dojo.objects.get(id=6), first_name="First" , last_name="ninja")
+<ninja: ninja object (7)>
+userapp.models.dojo.DoesNotExist: dojo matching query does not exist.
+>>> ninja.objects.create(dojo=dojo.objects.get(id=6), first_name="Seconed" , last_name="ninja")
+<ninja: ninja object (8)>
+>>> ninja.objects.create(dojo=dojo.objects.get(id=6), first_name="Third" , last_name="ninja")
+<ninja: ninja object (9)>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+6-Retrieve all the ninjas from the first dojo
+ ninja=ninja.objects.filter(dojo=dojo.objects.get(id=4))
+>>> for i in ninja.all():
+...   print(i.first_name + " " + i.last_name)
+First ninja
+Seconed ninja
+Third ninja
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+7- Retrieve all the ninjas from the last dojo
+ninja=Ninjas.objects.filter(dojo=Dojos.objects.get(id=6))
+>>> for i in ninja.all():
+...     print(i.first_name +" "+ i.last_name)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+8- Retrieve the last ninja's dojo:
+>>> Ninjas.objects.last().dojo.name
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+9- Create a new dojo:
+>>> Dojos.objects.create(name="fatima", city="Hebron", state="Palestine", desc="new dojo")
