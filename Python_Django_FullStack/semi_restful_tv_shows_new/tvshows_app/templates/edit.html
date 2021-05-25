@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    <a href="/">go back</a>
+    <h1>Edit Show {{myshows.id}}</h1>
+    <form action="/shows/{{myshows.id}}/update" method="POST">
+        {%csrf_token%}
+        <h5>Title</h5>
+    <input type="text" name="edit_form_title"  value="{{myshows.title}}">
+    <h5>Network</h5>
+    <input type="text" name="edit_form_network"value="{{myshows.network}}">
+    <h5>Release Date</h5>
+    <input type="date" name="edit_form_res_date"value="{{myshows.release_date}}">
+    <h5>Description</h5>
+    <textarea  name="edit_form_desc"cols="30" rows="10" >{{myshows.description}}</textarea>
+    <input type="submit" value="Update">
+    <a href="/shows/{{myshows.id}}">GO to show</a>
+    </form>
+</body>
+</html>
