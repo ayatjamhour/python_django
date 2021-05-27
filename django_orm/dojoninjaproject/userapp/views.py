@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from . import models
 from .models import *
-from django.contrib import messages
+# from django.contrib import messages
 
 
 def alldojo(request):
