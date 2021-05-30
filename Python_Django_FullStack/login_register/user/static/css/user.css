@@ -1,0 +1,14 @@
+*{
+    margin:0 auto;
+    padding: 0;
+}
+.maincontainer {
+    display: flex;
+    width: 900px;
+    background-color: rgb(175, 189, 189);
+    margin-top: 30px;
+    padding: 20px;
+}
+.con{
+    width: 600px;
+}
