@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div style="width: 100%;height: 100px;">
+    <h1 style="float: left;">CodingDojo Wall</h1>
+    <div style="float: right; display: flex;justify-content: space-around; width: 300px;">
+    <h3 >Welcome {{request.session.first_name}}</h3>
+    <h3><a href="logout">log off</a></h3></div></div>
+          
+   
+    <hr>
+    <form action="/wall/addpost" method="POST">
+        {% csrf_token %}
+        <h3>Post a messeage</h3>
+        <textarea name="posting" cols="60" rows="5"></textarea><br>
+        <input type="submit" value="post a messeage">
+    </form>
+    
+
+    {% for msg in posts %}
+    <div class="user_messages">
+        {{msg.owner.first_name}} {{msg.owner.last_name}} {{msg.updated_at}}
+        <p>{{msg.post}}</p>
+        <div class="user_comments">
+            {% for comment in msg.comments.all %} {# This grabs all of the comments for this specific comment #}
+                {{comment.userown.first_name}} {{comment.userown.last_name}} <br>
+                {{comment.comm}}
+                <p>{{comment.comment_text}}</p>
+            {% endfor %}
+        </div>
+        <form action="/wall/comment/{{msg.id}}"  method="POST">
+
+            {% csrf_token %}
+            <textarea  name="cmnt" placeholder="Leave a comment..."></textarea>
+            <input type="submit" value="Comment"> 
+         
+        </form>
+    </div>  
+{% endfor %}
+
+</body>
+</html>
